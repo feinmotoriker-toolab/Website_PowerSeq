@@ -1,0 +1,124 @@
+/* Neon Animation Component Styles */
+
+/* Power Strip Container */
+.power-strip {
+    position: relative;
+    display: inline-block;
+    margin: 2rem 0;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Neon Ring Overlay Styling */
+.neon-ring {
+    position: absolute;
+    /* Responsive Size: ~11.5% based on slot distance */
+    width: 11.5%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Ring Glow Effect */
+.neon-ring.active {
+    opacity: 1;
+    box-shadow:
+        0 0 5px #00d4ff,
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff,
+        inset 0 0 10px rgba(0, 212, 255, 0.3);
+    border: 3px solid #00d4ff;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 5px #00d4ff,
+            0 0 10px #00d4ff,
+            0 0 20px #00d4ff,
+            inset 0 0 10px rgba(0, 212, 255, 0.3);
+    }
+
+    50% {
+        box-shadow:
+            0 0 5px #00d4ff,
+            0 0 15px #00d4ff,
+            0 0 30px #00d4ff,
+            inset 0 0 15px rgba(0, 212, 255, 0.5);
+    }
+}
+
+/* Slot Positions - Angepasst an das Bild */
+/* Diese Werte müssen ggf. an die genaue Bildgröße angepasst werden */
+#slot1 {
+    left: 33%;
+    top: 37%;
+    transform: translate(-50%, -50%);
+}
+
+#slot2 {
+    left: 44.5%;
+    top: 37%;
+    transform: translate(-50%, -50%);
+}
+
+#slot3 {
+    left: 56.5%;
+    top: 37%;
+    transform: translate(-50%, -50%);
+}
+
+#slot4 {
+    left: 68.5%;
+    top: 37%;
+    transform: translate(-50%, -50%);
+}
+
+#slot5 {
+    left: 80.5%;
+    top: 37%;
+    transform: translate(-50%, -50%);
+}
+
+/* Restart Button */
+.restart-btn {
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    background: transparent;
+    border: 2px solid #00d4ff;
+    color: #00d4ff;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.1em;
+}
+
+.restart-btn:hover {
+    background: #00d4ff;
+    color: #0a0a0a;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
