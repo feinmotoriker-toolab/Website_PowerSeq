@@ -146,4 +146,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- Image Lightbox Logic ---
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = lightbox.querySelector('.lightbox-content');
+    const zoomableTiers = document.querySelectorAll('.price-tier.zoomable');
+
+    zoomableTiers.forEach(tier => {
+        tier.addEventListener('click', () => {
+            const img = tier.querySelector('img');
+            if (img) {
+                lightboxImg.src = img.src;
+                lightbox.style.display = 'flex';
+                setTimeout(() => {
+                    lightbox.classList.add('visible');
+                    document.body.style.overflow = 'hidden';
+                }, 10);
+            }
+        });
+    });
+
+    lightbox.addEventListener('click', () => {
+        lightbox.classList.remove('visible');
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+            lightboxImg.src = ''; // Clear src after closing
+        }, 300);
+    });
 });
