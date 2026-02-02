@@ -66,44 +66,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Contact Form Modal Logic ---
-    const modal = document.getElementById('contact-modal');
-    const openFormButtons = document.querySelectorAll('.open-form');
-    const closeModalButton = document.querySelector('.close-modal');
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
+    // --- Generic Modal Logic ---
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }, 10);
+    }
 
-    // Open Modal
-    openFormButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.style.display = 'flex';
-            setTimeout(() => {
-                modal.classList.add('visible');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            }, 10);
-        });
-    });
-
-    // Close Modal
-    function closeModal() {
+    function closeModal(modal) {
+        if (!modal) return;
         modal.classList.remove('visible');
         setTimeout(() => {
             modal.style.display = 'none';
-            document.body.style.overflow = '';
+            // Only restore scroll if no other visible modal exists
+            if (!document.querySelector('.modal.visible')) {
+                document.body.style.overflow = '';
+            }
         }, 300);
     }
 
-    closeModalButton.addEventListener('click', closeModal);
+    // Attach open events
+    document.querySelectorAll('.open-form').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('contact-modal');
+        });
+    });
 
-    // Close on click outside
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModal();
+    document.querySelectorAll('.open-impressum').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('impressum-modal');
+        });
+    });
+
+    // Attach close events to all modals
+    document.querySelectorAll('.modal').forEach(modal => {
+        // Close on X button
+        const closeBtn = modal.querySelector('.close-modal');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => closeModal(modal));
         }
+
+        // Close on click outside content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal(modal);
+            }
+        });
     });
 
     // Form Submission Handling
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
     if (contactForm) {
         contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -126,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     formStatus.textContent = 'Vielen Dank! Ihre Nachricht wurde erfolgreich versendet.';
                     formStatus.className = 'success';
                     contactForm.reset();
-                    setTimeout(closeModal, 3000);
+                    setTimeout(() => closeModal(document.getElementById('contact-modal')), 3000);
                 } else {
                     const result = await response.json();
                     if (result.errors) {
