@@ -349,7 +349,8 @@ footer {
 
     .product-hero,
     .info-grid,
-    .specs-grid {
+    .specs-grid,
+    .downloads-grid {
         grid-template-columns: 1fr;
     }
 
@@ -376,7 +377,7 @@ footer {
 
 .downloads-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -610,6 +611,13 @@ footer {
 .price-cards.three-cols .price-tier {
     flex: 1;
     min-width: 280px;
+    justify-content: center;
+}
+
+.price-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Contact Modal & Form */
