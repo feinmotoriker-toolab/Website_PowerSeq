@@ -297,8 +297,8 @@
                 <p>&copy; 2026 TOOLAB GmbH. Alle Rechte vorbehalten.</p>
                 <div class="footer-links">
                     <a href="#impressum-modal" class="open-impressum">Impressum</a>
-                    <a href="#">Datenschutz</a>
-                    <a href="#">Kontakt</a>
+                    <a href="#privacy-modal" class="open-privacy">Datenschutz</a>
+                    <a href="#contact-modal" class="open-form">Kontakt</a>
                 </div>
             </footer>
         </section>
@@ -328,13 +328,98 @@
 
                 <div class="form-privacy">
                     <input type="checkbox" id="privacy" name="privacy" required>
-                    <label for="privacy">Ich habe die <a href="#" target="_blank">Datenschutzerklärung</a> gelesen und
+                    <label for="privacy">Ich habe die <a href="#privacy-modal"
+                            class="open-privacy">Datenschutzerklärung</a> gelesen und
                         akzeptiere diese.</label>
                 </div>
 
-                <button type="submit" class="btn-primary full-width">Jetzt Senden</button>
+                <button type="submit" class="btn-primary full-width">Jetzt senden</button>
                 <div id="form-status"></div>
             </form>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Datenschutzerklärung</h2>
+            <div class="modal-scroll-area"
+                style="text-align: left; color: var(--text-color); font-size: 0.95rem; line-height: 1.6; max-height: 70vh; overflow-y: auto; padding-right: 1rem;">
+                <h3 style="margin-top: 1.5rem; color: var(--text-color);">1. Datenschutz auf einen Blick</h3>
+                <p><strong>Allgemeine Hinweise</strong><br>
+                    Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen
+                    Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen
+                    Sie persönlich identifiziert werden können.</p>
+
+                <p><strong>Datenerfassung auf dieser Website</strong><br>
+                    Wer ist verantwortlich für die Datenerfassung auf dieser Website? Die Datenverarbeitung auf dieser
+                    Website erfolgt durch den Websitebetreiber: TOOLAB GmbH Justus-von-Liebig-Straße 7 D-12489 Berlin
+                    E-Mail: contact@toolab.de</p>
+
+                <p>Wie erfassen wir Ihre Daten? Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese
+                    mitteilen. Hierbei handelt es sich um Daten, die Sie in unser Kontaktformular eingeben. Andere Daten
+                    werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme
+                    erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des
+                    Seitenaufrufs).</p>
+
+                <p>Wofür nutzen wir Ihre Daten? Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der
+                    Website zu gewährleisten. Andere Daten (Kontaktformular) dienen der Bearbeitung Ihrer Anfragen.</p>
+
+                <h3 style="margin-top: 1.5rem; color: var(--text-color);">2. Hosting</h3>
+                <p>Wir hosten unsere Website bei folgendem Anbieter: netcup GmbH Daimlerstraße 25 D-76185 Karlsruhe</p>
+                <p>Bei dem Besuch unserer Website erfasst der Hoster automatisch Log-Files (Server-Log-Files), um den
+                    Betrieb und die Sicherheit der Seite zu gewährleisten. Die Verarbeitung erfolgt auf Grundlage von
+                    Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der fehlerfreien Darstellung und Sicherheit
+                    der Website). Wir haben mit netcup einen Vertrag über Auftragsverarbeitung (AVV) geschlossen.</p>
+
+                <h3 style="margin-top: 1.5rem; color: var(--text-color);">3. Allgemeine Hinweise und
+                    Pflichtinformationen</h3>
+                <p><strong>Datenschutz</strong><br>
+                    Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln
+                    Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften
+                    sowie dieser Datenschutzerklärung.</p>
+
+                <p><strong>Hinweis zur verantwortlichen Stelle</strong><br>
+                    Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist: TOOLAB GmbH
+                    Justus-von-Liebig-Straße 7 D-12489 Berlin Telefon: +49 (0) 177 937 0083 E-Mail: contact@toolab.de
+                </p>
+
+                <p><strong>Speicherdauer</strong><br>
+                    Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde,
+                    verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt.
+                    Fassen Sie ein berechtigtes Löschersuchen ins Auge oder widerrufen Sie eine Einwilligung zur
+                    Datenverarbeitung, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe
+                    für die Speicherung Ihrer personenbezogenen Daten haben (z. B. steuer- oder handelsrechtliche
+                    Aufbewahrungsfristen).</p>
+
+                <p><strong>Ihre Rechte (Betroffenenrechte)</strong><br>
+                    Sie haben jederzeit das Recht:<br>
+                    • Unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen
+                    Daten zu erhalten.<br>
+                    • Die Berichtigung oder Löschung dieser Daten zu verlangen.<br>
+                    • Die Einschränkung der Verarbeitung zu verlangen.<br>
+                    • Einer Datenverarbeitung zu widersprechen.<br>
+                    • Beschwerde bei der zuständigen Aufsichtsbehörde einzulegen.</p>
+
+                <h3 style="margin-top: 1.5rem; color: var(--text-color);">4. Datenerfassung auf dieser Website</h3>
+                <p><strong>Kontaktformular</strong><br>
+                    Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem
+                    Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten (Name, E-Mail-Adresse,
+                    Nachricht) zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.
+                    Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+
+                <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre
+                    Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher
+                    Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten
+                    Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f
+                    DSGVO).</p>
+
+                <p>Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung
+                    auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung
+                    entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen
+                    – insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
+            </div>
         </div>
     </div>
 

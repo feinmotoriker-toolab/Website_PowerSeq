@@ -104,6 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.querySelectorAll('.open-privacy').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('privacy-modal');
+        });
+    });
+
     // Attach close events to all modals
     document.querySelectorAll('.modal').forEach(modal => {
         // Close on X button
@@ -161,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } finally {
                 formStatus.style.display = 'block';
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Jetzt Senden';
+                submitBtn.textContent = 'Jetzt senden';
             }
         });
     }
