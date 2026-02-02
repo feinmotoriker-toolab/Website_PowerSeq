@@ -213,7 +213,8 @@ section {
 }
 
 .hero-visual img {
-    max-width: 100%;
+    max-width: 600px;
+    width: 100%;
     filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
     margin-bottom: 2rem;
 }

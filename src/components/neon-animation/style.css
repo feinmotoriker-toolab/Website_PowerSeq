@@ -8,7 +8,9 @@
 }
 
 .product-image {
-    max-width: 100%;
+    max-width: 600px;
+    /* Begrenzung des "Zoomlevels" auf großen Bildschirmen */
+    width: 100%;
     height: auto;
     display: block;
     border-radius: 8px;
