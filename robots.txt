@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://toolab.de/sitemap.xml
+Sitemap: https://www.toolab.de/sitemap.xml
