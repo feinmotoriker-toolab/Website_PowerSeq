@@ -1,3 +1,36 @@
+/* @font-face rules for local Inter fonts */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('src/fonts/inter-300.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('src/fonts/inter-400.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('src/fonts/inter-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('src/fonts/inter-700.woff2') format('woff2');
+}
+
 :root {
     --bg-color: #ffffff;
     --surface-color: #f5f7fa;
@@ -265,6 +298,7 @@ section {
     padding: 3rem;
     border-radius: 8px;
     border: 1px solid var(--border-color);
+    text-align: justify;
 }
 
 .highlight-bg {
@@ -770,8 +804,22 @@ footer {
     cursor: pointer;
 }
 
-.form-privacy label {
+.privacy-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.privacy-text-wrapper label {
     font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color);
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.privacy-text-wrapper span {
+    font-size: 0.8rem;
     color: var(--text-muted);
     line-height: 1.4;
 }

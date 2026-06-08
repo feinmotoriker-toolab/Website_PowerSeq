@@ -148,23 +148,72 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                if (response.ok) {
+                 if (response.ok) {
                     formStatus.textContent = 'Vielen Dank! Ihre Nachricht wurde erfolgreich versendet.';
                     formStatus.className = 'success';
+                    formStatus.setAttribute('aria-live', 'polite');
                     contactForm.reset();
+                    
+                    // Reset accessibility attributes on reset
+                    contactForm.querySelectorAll('input, textarea').forEach(el => {
+                        el.removeAttribute('aria-invalid');
+                        const existingDesc = el.getAttribute('aria-describedby');
+                        if (existingDesc) {
+                            const cleaned = existingDesc.replace('form-status', '').trim();
+                            if (cleaned) {
+                                el.setAttribute('aria-describedby', cleaned);
+                            } else {
+                                el.removeAttribute('aria-describedby');
+                            }
+                        }
+                    });
+                    // Re-set initial description for privacy checkbox
+                    const privacyCheckbox = document.getElementById('privacy');
+                    if (privacyCheckbox) {
+                        privacyCheckbox.setAttribute('aria-describedby', 'privacy-desc');
+                    }
                     setTimeout(() => closeModal(document.getElementById('contact-modal')), 3000);
                 } else {
                     const result = await response.json();
+                    let errMsg = '';
                     if (result.errors) {
-                        formStatus.textContent = result.errors.map(error => error.message).join(", ");
+                        errMsg = result.errors.map(error => error.message).join(", ");
                     } else {
-                        formStatus.textContent = 'Hoppla! Da ist etwas schiefgelaufen.';
+                        errMsg = 'Hoppla! Da ist etwas schiefgelaufen.';
                     }
+                    formStatus.textContent = errMsg;
                     formStatus.className = 'error';
+                    formStatus.setAttribute('aria-live', 'assertive');
+                    
+                    // Set accessibility error state on required controls
+                    contactForm.querySelectorAll('input[required], textarea[required], input[type="checkbox"]').forEach(el => {
+                        el.setAttribute('aria-invalid', 'true');
+                        const existingDesc = el.getAttribute('aria-describedby');
+                        if (existingDesc) {
+                            if (!existingDesc.includes('form-status')) {
+                                el.setAttribute('aria-describedby', `${existingDesc} form-status`);
+                            }
+                        } else {
+                            el.setAttribute('aria-describedby', 'form-status');
+                        }
+                    });
                 }
             } catch (error) {
                 formStatus.textContent = 'Hoppla! Da ist ein Netzwerkfehler aufgetreten.';
                 formStatus.className = 'error';
+                formStatus.setAttribute('aria-live', 'assertive');
+                
+                contactForm.querySelectorAll('input[required], textarea[required], input[type="checkbox"]').forEach(el => {
+                    el.setAttribute('aria-invalid', 'true');
+                    const existingDesc = el.getAttribute('aria-describedby');
+                    if (existingDesc) {
+                        if (!existingDesc.includes('form-status')) {
+                            el.setAttribute('aria-describedby', `${existingDesc} form-status`);
+                        }
+                    } else {
+                        el.setAttribute('aria-describedby', 'form-status');
+                    }
+                });
             } finally {
                 formStatus.style.display = 'block';
                 submitBtn.disabled = false;
